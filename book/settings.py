@@ -29,8 +29,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'books',
+    # 'books',
     'accounts',
+    'rest_framework',
+    'rest_framework.authtoken',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "books.apps.BooksConfig"
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,12 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'accounts.middleware.SimpleMiddleware'
+    # 'accounts.middleware.SimpleMiddleware'
 ]
 
 ROOT_URLCONF = 'book.urls'
 CRISPY_TEMPLATE_PACK = 'uni_form'
-
 
 TEMPLATES = [
     {
